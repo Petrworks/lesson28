@@ -48,7 +48,7 @@ body {
 /* ======================== */
 .item {
   width: 100%;
-  height: 120px;
+  height: 60px;
   margin: 0 auto;
   background-color: #fff;
   padding-bottom: 10px;
@@ -56,7 +56,7 @@ body {
 }
 .item__text {
   display: inline-block;
-  width: calc(100% - 65px);
+  width: calc(100% - 150px);
   height: 50px;
   padding: 10px;
   color: rgb(2, 124, 87);
@@ -73,6 +73,12 @@ button {
   cursor: pointer;
   font-size: 20px;
 }
+/* new class */
+.btn-wrap {
+  display: flex;
+  max-width: 200px;
+}
+
 button:hover {
   background: rgb(209, 209, 17);
 }

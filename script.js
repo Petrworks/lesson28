@@ -18,6 +18,9 @@ function render() {
     let message = document.createTextNode(localst[i]);
     itemText.appendChild(message);
 
+    let b = document.createElement('div .btn-wrap');
+    b;
+
     let button = document.createElement('button');
     button.classList.add('item__delBtn');
     let buttonName = document.createTextNode('Del');
@@ -32,8 +35,8 @@ function render() {
 
     item.appendChild(itemText);
     item.appendChild(button);
-    item.appendChild(editButton);
-    // item.insertBefore(editButton, button);
+    // item.appendChild(editButton);
+    item.insertBefore(editButton, button);
     itemsCont.appendChild(item);
   }
 }
