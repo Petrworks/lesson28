@@ -15,11 +15,8 @@ function render() {
 
     let itemText = document.createElement('div');
     itemText.classList.add('item__text');
-    let message = document.createTextNode(localst[i]);
+    const message = document.createTextNode(localst[i]);
     itemText.appendChild(message);
-
-    let b = document.createElement('div .btn-wrap');
-    b;
 
     let button = document.createElement('button');
     button.classList.add('item__delBtn');
@@ -31,12 +28,16 @@ function render() {
     editButton.classList.add('item__editBtn');
     let edButtonName = document.createTextNode('Edit');
     editButton.appendChild(edButtonName);
-    editButton.setAttribute('onclick', 'editItem(' + pos + ')');
+    // editButton.setAttribute('onclick', 'editItem(' + pos + ')');
+
+    let btnWrap = document.createElement('div');
+    btnWrap.classList.add('btn-wrap');
+    itemText.appendChild(btnWrap);
 
     item.appendChild(itemText);
-    item.appendChild(button);
-    // item.appendChild(editButton);
-    item.insertBefore(editButton, button);
+    btnWrap.appendChild(button);
+    btnWrap.appendChild(editButton);
+    // item.insertBefore(editButton, button);
     itemsCont.appendChild(item);
   }
 }
@@ -58,11 +59,20 @@ function delItem(pos) {
   saveInLocalst();
 }
 
-// function editItem(pos) {
-//   localst.map();
-//   render();
-//   saveInLocalst();
-// }
+function editItem(pos) {
+  const itemNewText = localst[pos];
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = itemNewText;
+  editButton.addEventListener('click', function () {
+    let editText = input.value;
+    if (editText) {
+      localst[pos] = editText;
+      render();
+      saveInLocalst();
+    }
+  });
+}
 
 function saveInLocalst() {
   localStorage.setItem('localData', JSON.stringify(localst));

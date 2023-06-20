@@ -74,9 +74,14 @@ button {
   font-size: 20px;
 }
 /* new class */
+
 .btn-wrap {
   display: flex;
-  max-width: 200px;
+  width: 200px;
+  padding-left: 500px;
+  flex-direction: row-reverse;
+
+  align-items: center;
 }
 
 button:hover {
