@@ -1,7 +1,6 @@
 const addInput = document.querySelector('.add__input');
 const addBtn = document.querySelector('.add__btn');
 const itemsCont = document.querySelector('.items-cont');
-
 let localst = JSON.parse(localStorage.getItem('localData')) || [];
 
 function render() {
@@ -10,7 +9,7 @@ function render() {
   for (let i = 0; i < localst.length; i++) {
     let pos = i;
 
-    let item = document.createElement('div');
+    const item = document.createElement('div');
     item.classList.add('item');
 
     let itemText = document.createElement('div');
@@ -23,12 +22,13 @@ function render() {
     let buttonName = document.createTextNode('Del');
     button.appendChild(buttonName);
     button.setAttribute('onclick', 'delItem(' + pos + ')');
+    console.log(pos);
 
     let editButton = document.createElement('button');
     editButton.classList.add('item__editBtn');
     let edButtonName = document.createTextNode('Edit');
     editButton.appendChild(edButtonName);
-    // editButton.setAttribute('onclick', 'editItem(' + pos + ')');
+    editButton.setAttribute('onclick', 'editItem(' + pos + ')');
 
     let btnWrap = document.createElement('div');
     btnWrap.classList.add('btn-wrap');
@@ -36,7 +36,7 @@ function render() {
 
     item.appendChild(itemText);
     btnWrap.appendChild(button);
-    btnWrap.appendChild(editButton);
+    // btnWrap.appendChild(editButton);
     // item.insertBefore(editButton, button);
     itemsCont.appendChild(item);
   }
@@ -59,20 +59,20 @@ function delItem(pos) {
   saveInLocalst();
 }
 
-function editItem(pos) {
-  const itemNewText = localst[pos];
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.value = itemNewText;
-  editButton.addEventListener('click', function () {
-    let editText = input.value;
-    if (editText) {
-      localst[pos] = editText;
-      render();
-      saveInLocalst();
-    }
-  });
-}
+// function editItem(pos) {
+//   const itemNewText = localst[pos];
+//   const input = document.createElement('input');
+//   input.type = 'text';
+//   input.value = itemNewText;
+//   editButton.addEventListener('click', function () {
+//     let editText = input.value;
+//     if (editText) {
+//       localst[pos] = editText;
+//       render();
+//       saveInLocalst();
+//     }
+//   });
+// }
 
 function saveInLocalst() {
   localStorage.setItem('localData', JSON.stringify(localst));
